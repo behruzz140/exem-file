@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { TextField, IconButton, InputAdornment, Button } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useState } from "react";
+import { TextField, IconButton, InputAdornment, Button } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,7 @@ import { SignIn } from "@auth-interface";
 import { auth } from "@service";
 import { signInValidationSchema } from "@validation";
 import { setDataToCookie } from "@token-service";
-import { ForgotPassword } from '@modals';
+import { ForgotPassword } from "@modals";
 import Notification from "@notification";
 const Index = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,28 +17,30 @@ const Index = () => {
     email: "",
     password: "",
   };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = async (values: SignIn) => {
-    try{
+    try {
       const response = await auth.sign_in(values);
-      if(response.status === 201){
-        setDataToCookie("token", response?.data?.access_token)
+      if (response.status === 200) {
+        setDataToCookie("token", response?.data?.access_token);
         setTimeout(() => {
-          navigate("/main")
+          navigate("/main");
         }, 2500);
-        Notification({ title: "Muvaffaqiyatli tizimga kirildi", type: "success" });
+        Notification({
+          title: "Muvaffaqiyatli tizimga kirildi",
+          type: "success",
+        });
       }
-    }catch(error){
-      console.log(error)
-      Notification({ title: "Xatolik mavjud", type: "error" })
+    } catch (error) {
+      console.log(error);
+      Notification({ title: "Xatolik mavjud", type: "error" });
     }
-    
   };
 
   return (
     <>
       <ToastContainer />
-      <ForgotPassword open={modal} handleClose={()=>setModal(false)}/>
+      <ForgotPassword open={modal} handleClose={() => setModal(false)} />
       <div className="h-screen flex items-center justify-center flex-col gap-8 p-5">
         <h1 className="text-[35px] font-bold sm:text-[40px] md:text-[50px]">
           Tizimga kirish
@@ -69,7 +71,7 @@ const Index = () => {
                 />
                 <Field
                   name="password"
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   as={TextField}
                   label="Password"
                   fullWidth
@@ -85,14 +87,24 @@ const Index = () => {
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <IconButton onClick={()=>setShowPassword(!showPassword)} edge="end">
+                        <IconButton
+                          onClick={() => setShowPassword(!showPassword)}
+                          edge="end"
+                        >
                           {showPassword ? <VisibilityOff /> : <Visibility />}
                         </IconButton>
                       </InputAdornment>
                     ),
                   }}
                 />
-                <p className='mb-3 cursor-pointer hover:text-blue' onClick={()=>setModal(true)}>Parolni unutdingizmi ?</p>
+                <p className="mb-3 cursor-pointer hover:text-blue">
+                  <a
+                    href="https://663f59f35f644adf1e002a44--melodious-otter-d6fd4e.netlify.app/"
+                    target="_blank"
+                  >
+                    Parolni unutdingizmi ?
+                  </a>
+                </p>
                 <Button
                   type="submit"
                   variant="contained"

@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import CssBaseline from "@mui/material/CssBaseline";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "./menu";
+import Search from "./search";
 const drawerWidth = 240;
 interface ModalProps {
   isClosing: boolean;
@@ -16,6 +17,7 @@ const Header = ({ isClosing, setMobileOpen }: ModalProps) => {
   };
   return (
     <>
+    
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -38,11 +40,14 @@ const Header = ({ isClosing, setMobileOpen }: ModalProps) => {
             <Typography variant="h6" noWrap component="div">
              Clothes Shop
             </Typography>
+            <div className="ml-[800px]"><Search></Search></div>
             <Menu />
           </div>
         </Toolbar>
       </AppBar>
+    
     </>
+   
   );
 };
 

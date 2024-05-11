@@ -14,7 +14,7 @@ import {
           <Route index element={<SignIn />} />
           {/* <Route path="/signin" element={<SignIn/>} /> */}
           <Route path="/main/*" element={<MainLayout/>}>
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route index element={<Dashboard />} />
           <Route path="service" element={<Service />} />
           <Route path="orders" element={<Orders />} />
           <Route path="category" element={<Category />} />

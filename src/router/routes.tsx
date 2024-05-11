@@ -12,8 +12,8 @@ interface Route {
 
 const routes: Route[] = [
     {
-        path: "/main/dashboard",
-        content: "Users",
+        path: "/main",
+        content: "Workers",
         icon: <PersonIcon/>
     },
     {
