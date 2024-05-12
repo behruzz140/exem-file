@@ -17,15 +17,16 @@ const routes: Route[] = [
         icon: <PersonIcon/>
     },
     {
-        path: "/main/orders",
-        content: "Orders",
-        icon: <TurnedInNotIcon />
-    },
-    {
         path: "/main/service",
         content: "Products",
         icon: <LocalMallIcon />
     },
+    {
+        path: "/main/orders",
+        content: "Orders",
+        icon: <TurnedInNotIcon />
+    },
+   
     {
         path: "/main/category",
         content: "Category",

@@ -1,10 +1,37 @@
+import Product from "../../components/ui/products";
 
-const Index = () => {
+const index = () => {
   return (
     <div>
-      <h1>Products</h1>
+      <div>
+        <div className="flex justify-center gap-[40px]">
+          <Product />
+          <Product />
+          <Product />
+        </div>
+        <div className="flex justify-center gap-[40px] mt-[30px]">
+          <Product />
+          <Product />
+          <Product />
+        </div>
+        <div className="flex justify-center gap-[40px] mt-[30px]">
+          <Product />
+          <Product />
+          <Product />
+        </div>
+        <div className="flex justify-center gap-[40px] mt-[30px]">
+          <Product />
+          <Product />
+          <Product />
+        </div>
+        <div className="flex justify-center gap-[40px] mt-[30px]">
+          <Product />
+          <Product />
+          <Product />
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default index;

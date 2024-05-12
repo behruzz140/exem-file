@@ -2,7 +2,7 @@
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -33,7 +33,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: '100%',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     [theme.breakpoints.up('sm')]: {
@@ -47,7 +46,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar() {
   return (
-    <Search>
+ <div className='flex items-center gap-10'> 
+     <Search>
     <SearchIconWrapper>
       <SearchIcon />
     </SearchIconWrapper>
@@ -56,5 +56,7 @@ export default function SearchAppBar() {
       inputProps={{ 'aria-label': 'search' }}
     />
   </Search>
+  <NotificationsActiveIcon/>
+ </div>
   );
 }

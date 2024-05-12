@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Input from "./input";
+
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -22,8 +23,8 @@ export default function BasicModal() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div className="mb-[20px] mt-[20px] ml-[1120px]">
-      <Button onClick={handleOpen}>Add User</Button>
+    <div className="ml-[150px] mb-[-35px] ml-[1150px]">
+      <Button onClick={handleOpen} sx={{ bgcolor: 'blue', color: 'white' }}>Add User</Button>
       <Modal
         open={open}
         onClose={handleClose}
