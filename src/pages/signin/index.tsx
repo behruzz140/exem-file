@@ -8,11 +8,11 @@ import { SignIn } from "@auth-interface";
 import { auth } from "@service";
 import { signInValidationSchema } from "@validation";
 import { setDataToCookie } from "@token-service";
-import { ForgotPassword } from "@modals";
+
 import Notification from "@notification";
 const Index = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [modal, setModal] = useState(false);
+
   const initialValues: SignIn = {
     email: "",
     password: "",
@@ -40,7 +40,7 @@ const Index = () => {
   return (
     <>
       <ToastContainer />
-      <ForgotPassword open={modal} handleClose={() => setModal(false)} />
+
       <div className="h-screen flex items-center justify-center flex-col gap-8 p-5">
         <h1 className="text-[35px] font-bold sm:text-[40px] md:text-[50px]">
           Tizimga kirish

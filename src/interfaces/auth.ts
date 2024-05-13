@@ -33,10 +33,5 @@ export interface GetParams{
 }
 export interface Request {
     sign_in:(data:SignIn)=>any,
-    // sign_up:(data:SignUp)=>any,
-    // auth_verify:(data:AuthVerify)=>any,
-    // forgot_password:(data:ForgotPassword)=> any,
-    // update_password:(data:UpdatePassRequest)=> any,
-    // sign_out:()=>void,
-    // get_service:(params:GetParams)=>any
+   
 }

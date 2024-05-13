@@ -6,32 +6,40 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { removeDataFromCookie } from '@token-service';
-import { useNavigate } from 'react-router-dom';
-// import { NavLink } from 'react-router-dom';
+
+import { useNavigate } from "react-router-dom";
+import {removeCookies} from "../../utils/cocies";
+
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const navigate = useNavigate()
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const logout = () => {
-    removeDataFromCookie("token")
-    navigate('/')
-    window.location.reload()
-  };
-  const handleClose =()=>{
+  const handleClose = () => {
     setAnchorEl(null);
-  }
-  
+  };
+
+const navigate = useNavigate()
+
+const handleSignin = ()=>{
+    removeCookies("token");
+    navigate("/")
+}
+
+
+
+
+
   return (
-    
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+        
+        <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
             size="small"
@@ -40,8 +48,9 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>A</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
           </IconButton>
+        </Tooltip>
       </Box>
       <Menu
         anchorEl={anchorEl}
@@ -78,26 +87,26 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem>
+        <MenuItem >
           <Avatar /> Profile
         </MenuItem>
-        <MenuItem>
+        <MenuItem >
           <Avatar /> My account
         </MenuItem>
         <Divider />
-        <MenuItem>
+        <MenuItem >
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
         </MenuItem>
-        <MenuItem>
+        <MenuItem >
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={logout}>
+        <MenuItem onClick={handleSignin}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

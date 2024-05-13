@@ -1,30 +1,27 @@
 import Table from "../../components/table";
-import UserModal from "../../components/modals/users/users";
 import useWorkerstore from "../../store/user";
 import { useStore } from "zustand";
 import { useEffect } from "react";
 function Dashboard() {
-  const {getWorkers, data}:any = useStore(useWorkerstore)
+  const { getWorkers, data }: any = useStore(useWorkerstore);
 
-  async function getUsers(){
+  async function getUsers() {
     const payload = {
       page: 1,
-      limit: 10
-    }
-    await getWorkers(payload)
+      limit: 10,
+    };
+    await getWorkers(payload);
   }
 
-  useEffect(()=> {
-    getUsers()
-  }, [])
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   console.log(data);
-  
+
   return (
     <div>
-      <UserModal/>
-      <Table data={data}/>
-      
+      <Table data={data} />
     </div>
   );
 }

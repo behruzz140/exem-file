@@ -1,9 +1,3 @@
-
-export interface ModalProps {
-    open: boolean,
-    handleClose: ()=> void
-}
-
 interface Heder{
     title:string;
     value:string;

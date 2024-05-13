@@ -18,6 +18,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import ShareIcon from "@mui/icons-material/Share";
 import CommentIcon from "@mui/icons-material/Comment";
 import TextField from "@mui/material/TextField";
+import Dressing from '../../assets/dressing.jpg'
 export default function RecipeReviewCard() {
   const [openModal, setOpenModal] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
@@ -67,7 +68,8 @@ export default function RecipeReviewCard() {
         <CardMedia
           component="img"
           height="194"
-          image='https://picsum.photos/200/170'
+          image={Dressing}
+          // image='https://picsum.photos/200/170'
           alt="DressBarn Shop"
         />
         <CardContent>
@@ -79,7 +81,7 @@ export default function RecipeReviewCard() {
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
-            {/* Conditionally render FavoriteIcon or FavoriteBorderIcon based on like status */}
+           
             {isLiked ? (
               <FavoriteIcon style={{ color: "red" }} />
             ) : (

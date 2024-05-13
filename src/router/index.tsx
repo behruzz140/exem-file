@@ -5,7 +5,8 @@ import {
     RouterProvider,
   } from "react-router-dom";
   import App from "../App";
-  import {Dashboard, MainLayout, Orders, Service, SignIn, Category} from "@pages";
+  import Service from '../pages/services'
+  import {Dashboard, MainLayout, Orders, SignIn, Category} from "@pages";
   import Error from '../components/error/error'
   const index = () => {
     const router = createBrowserRouter(

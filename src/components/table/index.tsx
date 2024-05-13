@@ -1,29 +1,27 @@
-import { Fullscreen, Delete, Edit } from "@mui/icons-material";
+import { Fullscreen } from "@mui/icons-material";
 import { DataGrid, GridColDef, GridPagination } from "@mui/x-data-grid";
 import { Button, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 
 const columns: GridColDef[] = [
-  
-  { field: "first_name", headerName: "First name", width: 150 },
-  { field: "last_name", headerName: "Last name", width: 150 },
+  { field: "first_name", headerName: "First name", width: 180 },
+  { field: "last_name", headerName: "Last name", width: 180 },
   { field: "gender", headerName: "Gender", width: 70 },
   {
     field: "age",
     headerName: "Age",
     type: "number",
-    width: 50,
+    width: 100,
   },
-  { field: "phone_number", headerName: "Phone Number", width: 150 }, 
-    {
+  {
     field: "email",
     headerName: "Email",
     description: "This column has a value getter and is not sortable.",
     sortable: false,
-    width: 160,
+    width: 250,
     valueGetter: (value, row) => row.email || "", 
   },
-  { field: "id", headerName: "ID", width: 90 },
+  { field: "id", headerName: "ID", width: 300 },
 ];
 
 export default function DataTable(props: any) {
@@ -46,15 +44,6 @@ export default function DataTable(props: any) {
     handleClosePageSizeMenu();
   };
 
-  const handleEdit = (id: any) => {
-    console.log("Editing row with ID:", id);
-  };
-
-  const handleDelete = (id: any) => {
-    const updatedData = props.data.filter((row: any) => row.id !== id);
-    props.setData(updatedData);
-  };
-
   const pageSizeOptions = [5, 10, 20, 50];
 
   return (
@@ -67,7 +56,7 @@ export default function DataTable(props: any) {
           onClick={handleOpenPageSizeMenu}
           startIcon={<Fullscreen />}
         >
-          Full Screen
+         This Page For Watching the Users Status
         </Button>
         <Menu
           id="page-size-menu"
@@ -84,38 +73,8 @@ export default function DataTable(props: any) {
       </div>
       <DataGrid
         rows={props.data}
-        columns={[
-          ...columns,
-          {
-            field: "actions",
-            headerName: "Actions",
-            width: 220,
-            sortable: false,
-            
-            renderCell: (params) => (
-              <div>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  startIcon={<Edit />}
-                  onClick={() => handleEdit(params.row.id)}
-                  style={{ marginRight: '5px' }}
-                >
-                  Edit
-                </Button>
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  startIcon={<Delete />}
-                  onClick={() => handleDelete(params.row.id)}
-                >
-                  Delete
-                </Button>
-              </div>
-            ),
-          },
-        ]}
-        pageSizeOptions={[]} // Disable built-in pageSizeOptions
+        columns={columns}
+        pageSizeOptions={[]} 
         components={{
           Pagination: () => (
             <GridPagination
@@ -128,23 +87,12 @@ export default function DataTable(props: any) {
                 props.currentPage >=
                 Math.ceil(props.data.length / props.pageSize) - 1
               }
-              rowsPerPageOptions={[]} // Disable built-in rowsPerPageOptions
+              rowsPerPageOptions={[]} 
               rowsPerPage={props.pageSize}
             />
           ),
         }}
-        checkboxSelection
       />
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-

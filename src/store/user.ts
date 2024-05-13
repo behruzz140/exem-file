@@ -4,20 +4,19 @@ import request from "../service/config";
 import { toast } from "react-toastify";
 
 const useWorkerstore = create((set) => ({
-  // isLoader: false,
-  // count: 0,
+
   data: [],
   getWorkers: async (payload: any) => {
     try {
-      // set({isLoader: true})
+     
       const response = await request.get(
         `/workers?page=${payload.page}&limit=${payload.limit}`
       );
       if (response.status === 200) {
         set({ data: response?.data?.user });
-        // set({count: response?.data?.total_count})
+     
       }
-      // set({isLoader: false})
+   
     } catch (err) {
       console.log(err);
     }
